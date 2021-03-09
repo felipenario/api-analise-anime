@@ -4,7 +4,7 @@ let controller = require('../controllers/review');
 const auth = require('../lib/auth');
 
 
-router.get('/review/', auth.jwtVerify, controller.getAllReviews);
+router.get('/review/animes', auth.jwtVerify, controller.getAnimesByExistingReviews);
 router.get('/review/:id', auth.jwtVerify, controller.getReviewById);
 router.get('/review/anime/:anime',auth.jwtVerify, controller.getReviewByAnime);
 router.get('/my-reviews/', auth.jwtVerify, controller.getReviewByUser);

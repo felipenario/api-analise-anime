@@ -1,7 +1,7 @@
 let mongoose = require('mongoose');
 
 module.exports = ()=>{
-    let url = 'mongodb://localhost:27017/atividadeEAD'
+    let url = 'mongodb://localhost:27017/review-api'
     let options = {
         useNewUrlParser : true,
         useUnifiedTopology : true,

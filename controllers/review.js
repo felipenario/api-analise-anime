@@ -1,16 +1,6 @@
-let connection = require('../config/database');
 let Review = require('../models/review');
 
 module.exports = {
-    getAllReviews: (req, res, next)=>{
-        //Lógica de buscar todos
-        Review.find().then((reviews)=>{
-            res.status(200).json(reviews);
-        }).catch(error=>{
-            res.status(500).json(error)
-        })
-
-    },
     getReviewById: (req,res,next)=>{
         //Buscar Análise por ID
         Review.findOne({
@@ -45,8 +35,11 @@ module.exports = {
 
     },
     getAnimesByExistingReviews: (req, res, next) => {
-        Review.find().then((reviews) => {
-            res.status(200).json(reviews.anime);
+        Review.find({}, {
+            "_id": 0,
+            "anime": 1
+        }).then((animes) => {
+            res.status(200).json({animes});
         }).catch(error => {
             res.status(500).json(error);
         });
