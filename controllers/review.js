@@ -1,6 +1,13 @@
 let Review = require('../models/review');
 
 module.exports = {
+    getAllReviews: (req, res, next) => {
+      Review.find().then(reviews => {
+          res.status(200).json(reviews)
+      }).catch(error => {
+          res.status(500).json(error)
+      })
+    },
     getReviewById: (req,res,next)=>{
         //Buscar Análise por ID
         Review.findOne({
@@ -12,7 +19,7 @@ module.exports = {
         })
 
     },
-    getReviewByAnime: (req,res,next)=>{
+    getReviewsByAnime: (req,res,next)=>{
         //Buscar analise por anime
         Review.find({
             anime: req.params.anime
